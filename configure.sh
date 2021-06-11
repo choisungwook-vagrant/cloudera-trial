@@ -34,3 +34,11 @@ echo "[*] install python skipped"
 # copy hosts
 cp hosts /etc/hosts
 
+# change swappiness
+echo "vm.swappiness = 40" >> /etc/sysctl.conf
+
+# disable transparent_hugepage
+# reference: https://docs.cloudera.com/cdp-private-cloud-base/7.1.6/managing-clusters/topics/cm-disabling-transparent-hugepages.html
+echo never > /sys/kernel/mm/transparent_hugepage/defrag
+echo never > /sys/kernel/mm/transparent_hugepage/enabled
+chmod +x /etc/rc.d/rc.local
