@@ -105,20 +105,17 @@ if __name__=="__main__":
         print("\n")
 
         # # 1. ping test
-        # if not args.skip:
-        #     print("[*] ping test start")
-        #     if ping_to_configIP(bootstrap_IP):
-        #         raise UserDefinedException(f"bootstrap IP is already exists: {bootstrap_IP}")
+        if not args.skip:
+            print("[*] ping test start")
+            if ping_to_configIP(bootstrap_IP):
+                raise UserDefinedException(f"bootstrap IP is already exists: {bootstrap_IP}")
 
-        #     for controlplane_IP in controlplane_IPS:
-        #         if ping_to_configIP(controlplane_IP):
-        #             raise UserDefinedException(f"master IP is already exists: {controlplane_IP}")
+            for servesrIP in server_IPS:
+                if ping_to_configIP(servesrIP):
+                    raise UserDefinedException(f"master IP is already exists: {servesrIP}")
 
-        #     for worekr_IP in worker_IPS:
-        #         if ping_to_configIP(worekr_IP):
-        #             raise UserDefinedException(f"worker IP is already exists: {worekr_IP}")
-        #     print("[*] ping test done")
-        #     print("\n")
+            print("[*] ping test done")
+            print("\n")
 
         # # 2. genreate template
         # print("[*] generate bootstrap config")
