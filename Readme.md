@@ -35,6 +35,8 @@ sudo ./cloudera-manager-installer.bin
 * 설치가 끝나면 접속페이지 제공
 ![](imgs/install_done.png)
 
+예: http://192.168.25.188:7180/
+
 ## 라이센스 입력
 * 라이센스가 없으므로 평가판 선택
 
