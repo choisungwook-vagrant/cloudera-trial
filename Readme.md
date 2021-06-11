@@ -1,20 +1,21 @@
-> 라이센스 문제로 이 프로젝트는 폐기합니다.
+# 개요
+* 클라우데라 60일 평가판 설치를 위한 인프라 구성
 
-# 준비과정
-> 참고자료: https://docs.cloudera.com/documentation/enterprise/latest/topics/installation_reqts.html#pre-install
+<br>
 
-* vagrant가 자동 설치 진행. 아래 목록은 설정 내용
-  * jdk8 설치 <-- 스킵
-  * 방화벽 비활성화
-  * chrony 또는 ntp 설치
-  * python 2.7 설치 <-- 스킵
-  * selinux 비활성화
+# 준비
+* virtualbox 설치
+* vagrant 설치
+* 충분한 CPU, 메모리, 디스크 용량
+  * 권장 CPU: 4core 이상
+  * 권장 메모리: 64GB 이상
+  * 권장 디스크 용량: 200GB이상
 
 <br>
 
 # 설치방법
 ## 설정
-* config.yaml에서 IP, CPU, Memeory정보 수정
+* config/Readme.md파일을 참고하여 설정파일 생성
 
 ## 실행
 ```
@@ -41,3 +42,15 @@ sudo ./cloudera-manager-installer.bin
 * 라이센스가 없으므로 평가판 선택
 
 ![](imgs/license.png)
+
+<br>
+
+# vagrant가 설치하는 내용
+> 참고자료: https://docs.cloudera.com/documentation/enterprise/latest/topics/installation_reqts.html#pre-install
+
+* vagrant가 자동 설치 진행. 아래 목록은 설정 내용
+  * 방화벽 비활성화
+  * chrony 또는 ntp 설치
+  * selinux 비활성화
+
+<br>
