@@ -74,8 +74,25 @@ def create_vagrant_configfile(bootstrap_config, server_configs):
     except Exception as e:
         raise UserDefinedException(f"[-] generate_template Error: {e}")
 
-def create_hostsfile():
-    pass
+def create_hostsfile(server_IPS):
+    '''
+        hosts 파일 생성
+    '''
+    try:    
+        with open('hosts_template', 'r') as f:
+            hosts = [f"{serverip} cloudrea{idx+1}.network.com" for idx, serverip in enumerate(server_IPS)]
+            hostsfile_data = chevron.render(f,
+                {
+                    "hosts": hosts
+                }
+            )
+
+        output_path = os.path.join(Path(os.getcwd()).parent, 'hosts')
+        print("[*] create hosts file done")
+        with open(output_path, 'w') as f:
+            f.write(hostsfile_data)
+    except Exception as e:
+        raise UserDefinedException(f"[-] create hostsfile Error:{e}")
 
 def ping_to_configIP(target):
     """
@@ -139,10 +156,13 @@ if __name__=="__main__":
                 'cpu': args.serverCPU
             }
             server_configs.append(generate_template(config))
-        print("[*] generate controlplane_configs done")
+        print("[*] generate server config done")
 
-        # # 3. create vagrant_config.yml
+        # 3. create vagrant_config.yml
         create_vagrant_configfile(bootstrap_config, server_configs)
+
+        # 4. hosts파일 생성
+        create_hostsfile(server_IPS)
 
     except Exception as e:
         print(f"error: {e}")
