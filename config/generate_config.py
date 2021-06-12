@@ -117,46 +117,32 @@ if __name__=="__main__":
             print("[*] ping test done")
             print("\n")
 
-        # # 2. genreate template
-        # print("[*] generate bootstrap config")
-        # bootstrap_nodename= f"vagrant-bootstrap"
-        # bootstrap_config_dict = {
-        #     'image': vagrant_image,
-        #     'name': bootstrap_nodename,
-        #     'ip': args.bootstrapIP,
-        #     'memory': args.bootstrapMemory,
-        #     'cpu': args.bootstrapCPU
-        # }
-        # bootstrap_config = generate_template(bootstrap_config_dict)
-        # print("[*] generate bootstrap done")
+        # 2. genreate template
+        print("[*] generate bootstrap config")
+        bootstrap_nodename= f"cloudera-bootstrap"
+        bootstrap_config_dict = {
+            'image': vagrant_image,
+            'name': bootstrap_nodename,
+            'ip': args.bootstrapIP,
+            'memory': args.bootstrapMemory,
+            'cpu': args.bootstrapCPU
+        }
+        bootstrap_config = generate_template(bootstrap_config_dict)
+        print("[*] generate bootstrap done")
 
-        # print("[*] generate controlplane_configs config")
-        # for idx, controlplane_IP in enumerate(controlplane_IPS):
-        #     nodename= f"vagrant-controlpalne-{idx+1}"
-        #     config = {
-        #         'keyname': nodename,
-        #         'image': vagrant_image,
-        #         'name': nodename,
-        #         'ip': controlplane_IP,
-        #         'memory': args.controlPlaneMemory,                
-        #         'cpu': args.controlPlaneCPU
-        #     }
-        #     controlplane_configs.append(generate_template(config))
-        # print("[*] generate controlplane_configs done")
-
-        # print("[*] generate worker config")
-        # for idx, worekr_IP in enumerate(worker_IPS):
-        #     nodename= f"vagrant-worker-{idx+1}"
-        #     config = {
-        #         'keyname': nodename,
-        #         'image': vagrant_image,
-        #         'name': nodename,
-        #         'ip': worekr_IP,
-        #         'memory': args.workerMemory,
-        #         'cpu': args.workerCPU
-        #     }
-        #     worker_configs.append(generate_template(config))
-        # print("[*] generate worker done")
+        print("[*] generate servers config")
+        for idx, serverIP in enumerate(server_IPS):
+            nodename= f"cloudrea{idx+1}.network.com"
+            config = {
+                'keyname': nodename,
+                'image': vagrant_image,
+                'name': nodename,
+                'ip': serverIP,
+                'memory': args.serverMemory,                
+                'cpu': args.serverCPU
+            }
+            server_configs.append(generate_template(config))
+        print("[*] generate controlplane_configs done")
 
         # # 3. create vagrant_config.yml
         # create_vagrant_configfile(bootstrap_config, controlplane_configs, worker_configs)
