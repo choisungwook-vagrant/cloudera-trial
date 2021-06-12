@@ -41,7 +41,8 @@ def generate_template(config):
                     'name': config['name'],
                     'ip': config['ip'],
                     'memory': config['memory'],
-                    'cpu': config['cpu']
+                    'cpu': config['cpu'],
+                    'disk': config['disk']
                 }
             )
     except Exception as e:
@@ -139,7 +140,8 @@ if __name__=="__main__":
             'name': bootstrap_nodename,
             'ip': args.bootstrapIP,
             'memory': args.bootstrapMemory,
-            'cpu': args.bootstrapCPU
+            'cpu': args.bootstrapCPU,
+            'disk': args.bootstrapDisk
         }
         bootstrap_config = generate_template(bootstrap_config_dict)
         print("[*] generate bootstrap done")
@@ -153,7 +155,8 @@ if __name__=="__main__":
                 'name': nodename,
                 'ip': serverIP,
                 'memory': args.serverMemory,                
-                'cpu': args.serverCPU
+                'cpu': args.serverCPU,
+                'disk': args.serverDisk
             }
             server_configs.append(generate_template(config))
         print("[*] generate server config done")
