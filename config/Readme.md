@@ -27,5 +27,5 @@ python generate_config.py --bootstrapIP="192.168.25.170" --serverIPS="192.168.25
 * cloudera cpu, memory, disk size를 변경하고 싶은 경우
   * 메모리는 1024*xGB 형식으로 입력
 ```sh
-python generate_config.py --bootstrapIP="192.168.25.170" --serverIPS="192.168.25.171,192.168.25.172,192.168.25.173" serverCPU="2" --serverMemory="4096" --serverDisk="30GB"
+python generate_config.py --bootstrapIP="192.168.25.170" --serverIPS="192.168.25.171,192.168.25.172,192.168.25.173" --serverCPU="2" --serverMemory="4096" --serverDisk="30GB"
 ```
