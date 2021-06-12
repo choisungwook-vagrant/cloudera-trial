@@ -32,4 +32,4 @@ servers:
     cpu: 4
     disk: 
   
-numberOfworkers: 3
+numberOfservers: 3
