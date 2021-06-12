@@ -1,22 +1,35 @@
----
-server1:  
-  name: cloudrea1.network.com
-  box: centos/7
-  hostname: cloudrea1.network.com
-  ip: "192.168.25.188"
-  memory: 16384 # 16GB
-  cpu: 4
-server2:  
-  name: cloudrea2.network.com
-  box: centos/7
-  hostname: cloudrea2.network.com
-  ip: "192.168.25.189"
-  memory: 16384 # 16GB
-  cpu: 4
-server3:  
-  name: cloudrea3.network.com
-  box: centos/7
-  hostname: cloudrea3.network.com
-  ip: "192.168.25.190"
-  memory: 16384 # 16GB
-  cpu: 4
+bootstrap:
+  - name: cloudera-bootstrap
+    box: centos/7
+    hostname: cloudera-bootstrap
+    ip: 192.168.25.170
+    memory: 4096
+    cpu: 4
+    disk: 
+  
+servers:  
+  - name: cloudrea1.network.com
+    box: centos/7
+    hostname: cloudrea1.network.com
+    ip: 192.168.25.171
+    memory: 16384
+    cpu: 4
+    disk: 
+  
+  - name: cloudrea2.network.com
+    box: centos/7
+    hostname: cloudrea2.network.com
+    ip: 192.168.25.172
+    memory: 16384
+    cpu: 4
+    disk: 
+  
+  - name: cloudrea3.network.com
+    box: centos/7
+    hostname: cloudrea3.network.com
+    ip: 192.168.25.173
+    memory: 16384
+    cpu: 4
+    disk: 
+  
+numberOfworkers: 3
