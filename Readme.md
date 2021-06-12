@@ -27,7 +27,7 @@
 
 # 3. 설치방법
 ## 3.1 설정파일 생성
-* config/Readme.md파일을 참고하여 설정파일 생성
+* [설정파일 생성 메뉴얼링크](config/Readme.md)파일을 참고하여 설정파일 생성
 * 2개의 설정파일이 생성
   * config.yml: vagrant 설정파일
   * hosts: vagrant로 생성된 virtualbox의 hosts파일
