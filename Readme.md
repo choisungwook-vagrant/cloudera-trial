@@ -1,9 +1,12 @@
-# 개요
+# 1. 개요
 * 클라우데라 60일 평가판 설치를 위한 인프라 구성
+* vagrant로 인프라를 구성하고 클라우데라 공식 설치파일을 이용하여 클라우데라 설치
+
+![](./imgs/infra.png)
 
 <br>
 
-# 준비
+# 2. 준비
 * virtualbox 설치
 * vagrant 설치
 * python 3.6이상 설치
@@ -14,21 +17,21 @@
 
 <br>
 
-# 설치방법
-## 설정파일 생성
+# 3. 설치방법
+## 3.1 설정파일 생성
 * config/Readme.md파일을 참고하여 설정파일 생성
 
-## vagrant 플러그인 설치
+## 3.2 vagrant 플러그인 설치
 ```sh
 vagrant plugin install vagrant-disksize
 ```
 
-## vagrant 실행
+## 3.3 vagrant 실행
 ```
 vagrant up
 ```
 
-## 웹 대시보드 설치
+## 3.4 웹 대시보드 설치
 * putty같은 ssh client로 bootstrap 원격 접속
 * sudo ./cloudera-manager-installer.bin
 * 설치는 CUI로 진행
