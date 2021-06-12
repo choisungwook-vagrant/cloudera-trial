@@ -47,7 +47,7 @@ def generate_template(config):
     except Exception as e:
         raise UserDefinedException(f"[-] generate_template Error: {e}")
 
-def create_vagrant_configfile(bootstrap_config, controlplane_configs, worker_configs):
+def create_vagrant_configfile(bootstrap_config, server_configs):
     '''
         vagrant_config파일 생성
         생성위치: ../config.yml
@@ -55,18 +55,15 @@ def create_vagrant_configfile(bootstrap_config, controlplane_configs, worker_con
     
     if not bootstrap_config:
         raise UserDefinedException(f"[-] create_vagrant_configfile Error: bootstrap_config is None")
-    if not controlplane_configs or len(controlplane_configs) == 0:
-        raise UserDefinedException(f"[-] create_vagrant_configfile Error: controlplane_configs is None")
-    if not worker_configs or len(worker_configs) == 0:
-        raise UserDefinedException(f"[-] create_vagrant_configfile Error: controlplane_configs is None")
+    if not server_configs or len(server_configs) == 0:
+        raise UserDefinedException(f"[-] create_vagrant_configfile Error: server_configs is None")
 
     try:
         with open('vagrant_template.yml', 'r') as f:
             vagrant_config = chevron.render(f, 
                 {
-                    'controller': "\n".join(controlplane_configs),
-                    'servers': "\n".join(worker_configs),
-                    'numberOfworkers': len(worker_configs),
+                    'servers': "\n".join(server_configs),
+                    'numberOfservers': len(server_configs),
                     'bootstrap': bootstrap_config,
                 }
             )
@@ -145,7 +142,7 @@ if __name__=="__main__":
         print("[*] generate controlplane_configs done")
 
         # # 3. create vagrant_config.yml
-        # create_vagrant_configfile(bootstrap_config, controlplane_configs, worker_configs)
+        create_vagrant_configfile(bootstrap_config, server_configs)
 
     except Exception as e:
         print(f"error: {e}")
