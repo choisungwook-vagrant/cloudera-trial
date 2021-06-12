@@ -70,7 +70,7 @@ def create_vagrant_configfile(bootstrap_config, server_configs):
             )
 
         output_path = os.path.join(Path(os.getcwd()).parent, 'config.yml')
-        with open(output_path, 'w') as f:
+        with open(output_path, 'w', newline='\n') as f:
             f.write(vagrant_config)
     except Exception as e:
         raise UserDefinedException(f"[-] generate_template Error: {e}")
@@ -90,7 +90,7 @@ def create_hostsfile(server_IPS):
 
         output_path = os.path.join(Path(os.getcwd()).parent, 'hosts')
         print("[*] create hosts file done")
-        with open(output_path, 'w') as f:
+        with open(output_path, 'w', newline='\n') as f:
             f.write(hostsfile_data)
     except Exception as e:
         raise UserDefinedException(f"[-] create hostsfile Error:{e}")
